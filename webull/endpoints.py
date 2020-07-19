@@ -97,6 +97,9 @@ class urls :
     def paper_place_order(self, paper_account_id, stock):
         return f'{self.base_paper_url}/paper/1/acc/{paper_account_id}/orderop/place/{stock}'
 
+    def period_statistics(self, account_id, period_type):
+        return f'{self.base_trade_url}/v2/profitloss/{account_id}/account/periodStatistics?dateRangeType=all&periodType={period_type}'
+
     def place_option_orders(self, account_id):
         return f'{self.base_trade_url}/v2/option/placeOrder/{account_id}'
 

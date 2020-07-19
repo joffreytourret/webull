@@ -894,6 +894,16 @@ class paper_webull(webull):
         response = requests.get(self._urls.paper_orders(self._account_id, count) + str(status), headers=headers)
         return response.json()
 
+    def get_period_statistics(self, period_type='Day'):
+        '''
+        Daily/Weekly account P&L
+        period_type = Day/Week/Month/Year
+        '''
+        headers = self.build_req_headers(include_trade_token=True, include_time=True)
+        response = requests.get(self._urls.period_statistics(self._account_id, period_type), headers=headers)
+        return response.text
+
+
     def get_positions(self):
         ''' Current positions in paper trading account. '''
         return self.get_account()['positions']
